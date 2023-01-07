@@ -1,0 +1,467 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400&display=swap"); */
+
+@font-face {
+    font-family: starjedi;
+    src: url(fonts/starjedi/Starjedi.ttf);
+}
+
+@font-face {
+    font-family: starjohl;
+    src: url(fonts/starjedi/Starjhol.ttf);
+}
+
+:root {
+    /* --nav-font: "Andika", sans-serif;
+    --main-font: "Josefin Sans", sans-serif; */
+    --main-font: starjedi;
+    --head-font: starjohl;
+    color-scheme: dark;
+    --pages: 4;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.mandalorian *::selection {
+    color: black;
+    background-color: transparent;
+    text-shadow: 5px 5px 8px silver;
+}
+
+.darth-vader *::selection {
+    color: red;
+    background-color: transparent;
+    text-shadow: 0 0 10px red;
+}
+
+.trooper *::selection {
+    color: black;
+    background-color: #f5df1a;
+    text-shadow: none;
+}
+
+body {
+    overflow: hidden;
+    background-color: black;
+}
+
+.wrapper {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    isolation: isolate;
+    position: relative;
+    perspective: 10px;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/*Chrome Safari Opera*/
+.wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.bg-container {
+    background-image: url(img/body-bg.jpg);
+    background-position: center;
+    background-size: 350px;
+    height: calc(100vh * var(--pages));
+    width: 100vw;
+    transform: translateZ(-60px) scale(7);
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+section {
+    min-height: 100vh;
+    scroll-snap-align: center;
+}
+
+section:first-of-type {
+    margin-top: 20px;
+}
+
+section:last-of-type {
+    margin-bottom: 20px;
+}
+
+.main-nav {
+    font-family: var(--main-font);
+    font-size: calc(max(1rem, 2vw));
+    font-weight: 700;
+    text-transform: lowercase;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    display: grid;
+    grid-template-columns: minmax(80px, max(150px, 15vw)) 1fr;
+    align-items: center;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.nav-logo {
+    background-color: transpraent;
+}
+
+.nav-logo > svg {
+    width: 100%;
+    display: block;
+    fill: #f5df1a;
+    transition-property: filter, fill;
+    transition-duration: 0.3s;
+}
+
+.nav-logo > svg:hover {
+    fill: #ffe919;
+    filter: drop-shadow(0 0 2px #fff);
+}
+
+.main-nav-list {
+    margin-right: 20px;
+    display: flex;
+    list-style: none;
+    justify-content: end;
+    align-items: center;
+    gap: max(0.5rem, 4vw);
+}
+
+.nav-link a {
+    color: white;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.nav-link:hover a {
+    color: black;
+    filter: drop-shadow(0 0 5px white);
+}
+
+section {
+    display: grid;
+    place-content: center;
+}
+
+.card {
+    padding: 5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.card-img {
+    width: calc(16vw + 50px);
+    display: flex;
+    align-items: end;
+    cursor: default;
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.trooper .card-img {
+    width: calc(16vw - 10px);
+}
+
+.card-img img {
+    display: block;
+    width: 100%;
+}
+
+.card-content {
+    color: white;
+    font-family: var(--main-font);
+    text-transform: lowercase;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 0 8px white;
+}
+
+.card-content h2 {
+    font-family: var(--head-font);
+    font-size: 3rem;
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.card-content p {
+    font-size: 1.02rem;
+    max-width: 90ch;
+}
+
+.quote {
+    position: relative;
+}
+
+.quote::before {
+    content: open-quote;
+    font-size: 2rem;
+    position: absolute;
+    top: -0.8rem;
+    left: -1.3rem;
+}
+.quote::after {
+    content: close-quote;
+    font-size: 2rem;
+    position: absolute;
+    top: -0.8rem;
+    right: -1rem;
+}
+
+.darth-vader .card-img {
+    filter: drop-shadow(3px 3px 5px red);
+}
+
+.darth-vader .card-content h2 {
+    text-shadow: 0 0 10px red;
+}
+
+.mandalorian .card-img {
+    filter: drop-shadow(2px 2px 2px silver);
+}
+
+.mandalorian .card-content h2 {
+    text-shadow: 5px 5px 8px silver;
+}
+
+.trooper .card-content h2 {
+    text-shadow: 0px 0px 8px white;
+}
+
+.trooper .card-img {
+    filter: drop-shadow(2px 0px 3px white);
+}
+
+@keyframes animate-nav-pop {
+    0% {
+        transform: scaleY(0);
+        transform-origin: top;
+        opacity: 0.1;
+    }
+
+    75% {
+        transform: scaleY(1);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes increase-filter {
+    from {
+        backdrop-filter: blur(0px);
+    }
+    to {
+        backdrop-filter: blur(1px);
+    }
+}
+
+@keyframes decrease-filter {
+    to {
+        backdrop-filter: blur(0px);
+    }
+}
+
+.main-nav.anim {
+    --filteranimation: increase-filter;
+    animation: animate-nav-pop 0.8s ease-out 0.4s both,
+        var(--filteranimation) 2s forwards;
+}
+
+@keyframes body-scale {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.wrapper.anim {
+    animation: body-scale 0.5s
+        cubic-bezier(1, -0.11, 0.49, 1.5);
+}
+
+.load {
+    position: fixed;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.load > video {
+    width: max(100vw + 4px, calc(16 / 9 * 100vh + 4px));
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+}
+
+.load.end {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .main-nav {
+        grid-template-columns:
+            20vw
+            1fr;
+        font-size: calc(2vw);
+        font-weight: 400;
+        padding-top: 5px;
+    }
+    .main-nav-list {
+        margin-right: 10px;
+        justify-content: space-around;
+    }
+    .home-link {
+        display: none;
+    }
+
+    .card {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card-content {
+        text-shadow: none;
+        line-height: 1;
+    }
+
+    .card-content h2 {
+        font-size: 2rem;
+    }
+    .card-content p {
+        font-size: 0.8rem;
+    }
+}
+
+.card {
+    transform: translate(-100%, 0);
+}
+
+section.anim-in .card {
+    animation: section-in-animation 0.3s forwards;
+}
+
+section.anim-out .card {
+    animation: section-out-animation 0.1s;
+}
+
+@keyframes section-in-animation {
+    from {
+        transform: translate(-100%, 0);
+    }
+    to {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes section-out-animation {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(100%, 0);
+    }
+}
+
+section.anim-in .card-img {
+    animation: in-img-animation 1s forwards;
+}
+
+section.anim-out .card-img {
+    animation: out-img-animation 0.1s;
+}
+
+@keyframes in-img-animation {
+    from {
+        transform: translate(-50%, 0) rotate(20deg);
+        transform-origin: top center;
+        filter: drop-shadow(0 0 10px silver);
+    }
+    to {
+        transform: translate(0, 0) rotate(0);
+    }
+}
+@keyframes out-img-animation {
+    from {
+        transform-origin: top center;
+        transform: translate(0, 0) rotate(0);
+    }
+    to {
+        transform: translate(-50%, 0) rotate(20deg);
+    }
+}
+
+.landing *::selection {
+    color: #f5df1a;
+}
+
+.landing {
+    text-align: center;
+    letter-spacing: 2px;
+    font-family: var(--main-font);
+    text-transform: lowercase;
+    font-size: 1.5rem;
+    padding-inline: 1rem;
+    position: realitive;
+}
+.presenting {
+    font-family: var(--head-font);
+    font-size: 3.5rem;
+}
+
+.presenting > span {
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(
+        90deg,
+        hsl(54, 92%, 30%),
+        hsl(54, 92%, 70%),
+        hsl(54, 92%, 30%)
+    );
+    background-size: 300%;
+    animation: text-bg-animation 2s infinite alternate;
+}
+
+.link-git > a {
+    color: #f5df1a;
+    filter: drop-shadow(0 0 10px black);
+}
+
+@keyframes text-bg-animation {
+    from {
+        background-position: 0%;
+    }
+    to {
+        background-position: 100%;
+    }
+}
